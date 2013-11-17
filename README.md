@@ -1,75 +1,43 @@
 # 26th and California
 
-## http://26thandcalifornia.recoveredfactory.net
+26th and California is a project to explain and visualize date from the [Cook County Jail API](https://github.com/sc3/cookcountyjail).
 
-A Javascript app to browse and visualize data from the Supreme
-Chi-Town Coding Crew's [Cook County Jail API](http://cookcountyjail.recoveredfactory.net/api/1.0/?format=json) 
-([source](https://github.com/sc3/cookcountyjail)).
+See it in action at http://26thandcalifornia.recoveredfactory.net
 
-# Install and run server
+Looking for the old version of this project? Find v1.0 on [Github](https://github.com/sc3/26thandcalifornia-v1.0/) and [on the web](http://26thandcalifornia-v1.0.recoveredfactory.net).
+
+# Contributing to 26th and California
+
+The 26th and California project welcomes non-coders and coders alike to contribute to building a useful and informative site about the Cook County Jail inmate population.
+
+All contributors should request access to the [Google spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0Ak3IIavLYTovdExmUldWMVVDR3I5MWtFU01Nc054Mmc&usp=drive_web) which powers the site's content. 
+
+[26th & California](http://26thandcalifornia.recoveredfactory.net) is self-documenting -- each page includes outstanding tasks related to further developing the page.
+
+Tasks and their associated skills include:
+
+* Data clean-up (basic spreadsheet skills)
+* Copy and writing (basic spreadsheet skills)
+* Analysis (spreadsheet skills, basic understanding of web APIs)
+* Content development (HTML)
+* Design (HTML and CSS)
+* Visualization (HTML, CSS, and Javascript) 
+
+## Contributing code
+
+### Install the project
 
 Clone the repo:
 
     git clone git://github.com/sc3/26thandcalifornia.git 
 
-If you have Python, start a local server:
+Do some setup and launch the Tarbell preview server:
 
-    cd 26thandcalifornia/app
-    python -m SimpleHTTPServer
+    cd 26thandcalifornia
+    git submodule update --init
+    tarbell serve
 
-Now visit [`http://localhost:8000`](http://localhost:8000) in your web browser.
+Now visit [`http://localhost:5000`](http://localhost:5000) in your web browser.
 
-# Development
-
-Create Backbone views based on our special `JailView` extended view object and
-export them as AMD modules.
-
-If you create a file called `views/StatisticsandmeasurementsView.js`, it will automatically be made
-available at `#statisticsandmeasurements/`.
-
-Here's a very basic view:
-
-    define([
-      'views/JailView',
-    ],
-    function(JailView) {
-      var StatisticsandmeasurementsView = JailView.extend({
-        render: function() {
-          this.$el.html('Hello world');
-          return this;
-        }
-      });
-      return StatisticsandmeasurementsView;
-    });
-
-JailView objects can also accept a collection to load before rendering:
-
-    define([
-      'views/JailView',
-      'collections/InmateCollection',
-    ],
-    function(JailView, InmateCollection) {
-      var LoadcollectionView = JailView.extend({
-        collection: new InmateCollection(),
-        render: function() {
-          this.$el.html('This renders once inmate data is retrieved.');
-          return this;
-        }
-      });
-      return LoadcollectionView;
-    });
-
-
-# Deployment
-
-You'll need s3cmd. In OS X you can `brew install s3cmd` and in Ubuntu `sudo apt-get install s3cmd`
-should do the trick.
-
-Configure s3cmd with your credentials:
-    s3cmd --configure
-
-Now run deploy.sh to sync files:
-    ./deploy.sh
-
-
+### 
 
