@@ -3,7 +3,7 @@ var GithubIssuesTemplate = ' \
 <% _.each(issues, function(issue) { %> \
   <div class="issue"> \
     <p class="title"> \
-      <a href="<%= issue.url %>" target="_blank"><%= issue.title %></a> \
+      <a href="<%= issue.html_url %>" target="_blank"><%= issue.title %></a> \
       <% _.each(issue.labels, function(label) { %> \
         <% if (label.abbreviated_name) { %> \
         <span class="issue-label label" style="background-color: #<%= label.color %>"><%= label.abbreviated_name %></span> \

@@ -18,7 +18,7 @@ SPREADSHEET_KEY = "0Ak3IIavLYTovdExmUldWMVVDR3I5MWtFU01Nc054Mmc"
 
 # S3 bucket configuration
 S3_BUCKETS = {
-     "staging": "s3://26thandcalifornia.recoveredfactory.net/staging/"
+     "staging": "s3://26thandcalifornia.recoveredfactory.net/"
 }
 
 # Default template variables

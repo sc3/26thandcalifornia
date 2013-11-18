@@ -6,6 +6,8 @@ See it in action at http://26thandcalifornia.recoveredfactory.net
 
 Looking for the old version of this project? Find v1.0 on [Github](https://github.com/sc3/26thandcalifornia-v1.0/) and [on the web](http://26thandcalifornia-v1.0.recoveredfactory.net).
 
+26th and California requires [Tarbell](http://tarbell.tribapps.com) with Google spreadsheet access configured.
+
 # Contributing to 26th and California
 
 The 26th and California project welcomes non-coders and coders alike to contribute to building a useful and informative site about the Cook County Jail inmate population.
