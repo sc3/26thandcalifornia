@@ -1,10 +1,10 @@
 body {
   background-color: #e5e5e5;
 }
-body>.container, .footer {
-  font-family: "Radley", serif;
-  font-size: 19px;
+body>.container, .in-progress, .footer {
+  font-size: 1.3em;
 }
+.label { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; }
 
 a { color: #900; }
 a:hover { color: #f00; }
@@ -21,7 +21,6 @@ a:hover { color: #f00; }
 .navbar .sections>li>a:hover {
   background-color: #e9e9e9;
 }
-
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Radley", serif;
@@ -60,9 +59,31 @@ h1, h2, h3, h4, h5, h6 {
   margin: 30px 15% 30px 15%;
 }
 
+.in-progress {
+  margin: 90px 15% 0 15%;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.in-progress .title { font-weight: bold; }
+
+.in-progress h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.in-progress .issue {
+  font-size: .9em;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
 .headline, .footer {
   text-align: center;
   margin: 30px 15% 25px 15%;
+  font-family: "Radley", serif;
 }
 
 .headline h1 { 
@@ -72,7 +93,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer {
-  margin-top: 45px;
   margin-bottom: 20px;
   padding-top: 15px;
   border-top: 1px solid #999;
@@ -82,5 +102,4 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   margin-bottom: 7px;
 }
-
 

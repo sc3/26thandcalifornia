@@ -1,5 +1,7 @@
 {% extends "_base.html" %}
 
+{% block preview %}{% endblock preview %}
+
 {% block css %}
 {{ super() }}
 <link href='http://fonts.googleapis.com/css?family=Radley:400,400italic' rel='stylesheet' type='text/css'>
@@ -13,7 +15,19 @@
 <!-- <![endif]-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
 <script src="js/app.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  var issues = new GithubIssuesCollection([], {
+    url: 'https://api.github.com/repos/sc3/26thandcalifornia/issues',
+    params: {'labels': 'page: {{ PATH }}' }
+  });
+  var issues_list = new GithubIssuesView({
+    el: $('#in-progress-issues'),
+    collection: issues,
+  });
+  issues.fetch();
+});
+</script>
 {% endblock scripts %}
-
-{% block preview %}{% endblock preview %}
