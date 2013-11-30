@@ -80,6 +80,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 15px;
 }
 
+.in-progress img {
+  display: none;
+}
+
 .headline, .footer {
   text-align: center;
   margin: 30px 15% 25px 15%;
@@ -106,4 +110,10 @@ h1, h2, h3, h4, h5, h6 {
 .alert {
   margin-top: 15px;
   font-size: .7em;
+}
+
+@media (max-width: 1000px) {
+  .navbar .social-menu {
+    display: none;
+  }
 }
