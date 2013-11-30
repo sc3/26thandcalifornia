@@ -15,6 +15,10 @@ var GithubIssuesTemplate = ' \
 <% }); %> \
 ';
 
+var average = function(array){
+    return array.reduce(function(a, b){return parseInt(a)+ parseInt(b);})/array.length;
+}
+
 var GithubIssuesCollection = Backbone.Collection.extend({
   initialize: function(data, o) {
     this.options = o || {};
@@ -53,7 +57,7 @@ var JailCollection = Backbone.Collection.extend({
     return this.options.url;
   },
   sortAscending: true,
-  sortByAttributeKey: 'booking_date',
+  sortByAttributeKey: 'date',
   comparator: function(lhs, rhs) {
     var compare = null,
     val_lhs = lhs.get(this.sortByAttributeKey),
@@ -69,9 +73,9 @@ var JailCollection = Backbone.Collection.extend({
     }
     return this.sortAscending ? compare : -compare;
   },
-  parse: function(data) {
-    this.meta = data.meta;
-    return data.objects;
+  average: function(key) {
+    this.sort();
+    return average(_.pluck(this.toJSON(), key));
   }
 });
 

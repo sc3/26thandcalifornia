@@ -20,13 +20,13 @@
 <script type="text/javascript">
 $(document).ready(function() {
   var collection = new JailCollection([], {
-    url: 'data/dpc.json'
+    url: 'data/daily_population.json'
   });
   var chart = new Barchart({
     el: $("#chart"),
     collection: collection,
-    xKey: 'booking_date',
-    yKey: 'total',
+    xKey: 'date',
+    yKey: 'population',
   });
   collection.fetch();
 });

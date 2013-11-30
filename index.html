@@ -11,6 +11,10 @@
       <h2>{{ findings_headline }}</h2>
       <h3>{{ finding1_headline }}</h3>
       {{ finding1_text|markdown }}
+
+
+      <h2>On average, the jail population is <span class="population-trend-label"></span></h2>
+      <p>Since (START DATE TK), the average number of bookings per day is <span class="population-bookings"></span> and the average number of departures per day is <span class="population-leavings"></span>. This means that the jail population is changing by <span class="population-trend"></span> persons per day.
     </div>
     <div class="col-md-5">
       <h2>{{ about_headline }}</h2>
@@ -19,5 +23,28 @@
   </div>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+$(document).ready(function() {
+  var collection = new JailCollection([], {
+    url: 'data/daily_population.json'
+  });
+  collection.fetch({
+    success: function() {
+      var booked_avg = collection.average('booked');
+      var left_avg = collection.average('left');
+      var booked_left_diff = booked_avg - left_avg;
+      var trend = (booked_left_diff > 0) ? "increasing" : "decreasing";
+      $('.population-trend-label').text(trend);
+      $('.population-bookings').text(booked_avg);
+      $('.population-leavings').text(left_avg);
+      $('.population-trend').text(booked_left_diff);
+    }
+  });
+});
+</script>
+{% endblock %}
 
 
