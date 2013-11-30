@@ -9,12 +9,10 @@
   <div class="row">
     <div class="col-md-7">
       <h2>{{ findings_headline }}</h2>
+      <h3>On average, the jail population is <span class="population-trend-label"></span></h3>
+      <p>Since <span class="start"></span>, the average number of bookings per day is <span class="population-bookings"></span> and the average number of departures per day is <span class="population-leavings"></span>. This means that the jail population is changing by <span class="population-trend"></span> persons per day. <a href="population.html">Learn more about population trends &raquo;</a></p>
       <h3>{{ finding1_headline }}</h3>
       {{ finding1_text|markdown }}
-
-
-      <h2>On average, the jail population is <span class="population-trend-label"></span></h2>
-      <p>Since (START DATE TK), the average number of bookings per day is <span class="population-bookings"></span> and the average number of departures per day is <span class="population-leavings"></span>. This means that the jail population is changing by <span class="population-trend"></span> persons per day.
     </div>
     <div class="col-md-5">
       <h2>{{ about_headline }}</h2>
@@ -29,7 +27,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
   var collection = new JailCollection([], {
-    url: 'data/daily_population.json'
+    url: 'http://cookcountyjail.recoveredfactory.net/api/2.0/daily_population'
   });
   collection.fetch({
     success: function() {
@@ -37,10 +35,12 @@ $(document).ready(function() {
       var left_avg = collection.average('left');
       var booked_left_diff = booked_avg - left_avg;
       var trend = (booked_left_diff > 0) ? "increasing" : "decreasing";
+      var first = collection.toJSON().pop();
+      $('.start').text(first.date);
       $('.population-trend-label').text(trend);
-      $('.population-bookings').text(booked_avg);
-      $('.population-leavings').text(left_avg);
-      $('.population-trend').text(booked_left_diff);
+      $('.population-bookings').text(booked_avg.toFixed(1));
+      $('.population-leavings').text(left_avg.toFixed(1));
+      $('.population-trend').text(booked_left_diff.toFixed(1));
     }
   });
 });

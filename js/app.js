@@ -56,7 +56,7 @@ var JailCollection = Backbone.Collection.extend({
   url: function() {
     return this.options.url;
   },
-  sortAscending: true,
+  sortAscending: false,
   sortByAttributeKey: 'date',
   comparator: function(lhs, rhs) {
     var compare = null,
