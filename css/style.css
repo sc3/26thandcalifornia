@@ -158,6 +158,12 @@ section {
   color: #f00;
 }
 
+.line {
+  fill: none;
+  stroke: #999;
+  stroke-width: 4px;
+}
+
 @media (max-width: 1000px) {
   .navbar .social-menu {
     display: none;
