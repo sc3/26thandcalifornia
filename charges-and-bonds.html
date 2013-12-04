@@ -1,0 +1,15 @@
+{% extends "_26thandcalifornia.html" %}
+
+{% block page %}
+<div class="headline">
+  <h1>{{ page_charges_and_bonds.title.value }}</h1>
+</div>
+
+<div class="hero">
+{{ page_charges_and_bonds.intro.value|markdown }}
+</div>
+
+<hr />
+
+<p>Content goes here</p>
+{% endblock %}
