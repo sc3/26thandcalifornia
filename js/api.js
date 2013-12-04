@@ -16,7 +16,7 @@ var GithubIssuesTemplate = ' \
 ';
 
 var average = function(array){
-    return array.reduce(function(a, b){return parseInt(a)+ parseInt(b);})/array.length;
+  return array.reduce(function(a, b){return parseInt(a) + parseInt(b);})/array.length;
 }
 
 var GithubIssuesCollection = Backbone.Collection.extend({
