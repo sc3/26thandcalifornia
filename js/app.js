@@ -111,11 +111,10 @@ var Barchart = Backbone.View.extend({
     }, o);
 
     this.dimensions = {};
-    this.collection.bind('sync', function() {
-      this.collection.sort();
-      this.render();
-      $(window).on('resize', _.bind(this.render, this));
-    }, this);
+    this.collection.sort();
+
+    $(window).on('resize', _.bind(this.render, this));
+    this.render();
   },
   get_dimensions: function() {
     var window_width = $(window).width();

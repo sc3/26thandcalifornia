@@ -15,22 +15,13 @@
 </div>
 {% endblock content %}
 
-{% block scripts %}
-{{ super() }}
-<script type="text/javascript">
-$(document).ready(function() {
-  var collection = new JailCollection([], {
-    url: 'data/daily_population.json'
-  });
-  var chart = new Barchart({
-    el: $("#chart"),
-    collection: collection,
-    xKey: 'date',
-    yKey: 'population',
-  });
-  collection.fetch();
+{% block data_loaded %}
+var chart = new Barchart({
+  el: $("#chart"),
+  collection: DailyPopulation,
+  xKey: 'date',
+  yKey: 'population',
 });
-</script>
 {% endblock %}
 
 
