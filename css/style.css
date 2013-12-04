@@ -1,9 +1,17 @@
 body {
   background-color: #e5e5e5;
 }
-body>.container, .in-progress, .footer {
+.content, .footer {
   font-size: 1.3em;
+  font-family: "Radley", serif;
 }
+
+
+.headline {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 .label { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; }
 
 a { color: #900; }
@@ -24,6 +32,7 @@ a:hover { color: #f00; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Radley", serif;
+  margin-bottom: 20px;
 }
 
 .box {
@@ -56,11 +65,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content {
-  margin: 30px 15% 30px 15%;
+  opacity: 0.1;
+  margin: 30px 0;
 }
 
 .in-progress {
-  margin: 90px 15% 0 15%;
+  margin-top: 70px;
   padding-left: 35px;
   padding-right: 35px;
 }
@@ -74,7 +84,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .in-progress .issue {
-  font-size: .9em;
   border-top: 1px solid #ccc;
   padding-top: 15px;
   margin-top: 15px;
@@ -84,10 +93,10 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-.headline, .footer {
+.headline {
   text-align: center;
-  margin: 30px 15% 25px 15%;
-  font-family: "Radley", serif;
+  margin-top: 35px;
+  margin-bottom: 45px;
 }
 
 .headline h1 { 
@@ -96,10 +105,24 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid #999;
 }
 
+hr {
+  background-color: #ccc;
+  border: none;
+  height: 1px;
+  margin: 40px 0;
+}
+
+.hero {
+  font-size: 1.5em;
+}
+.hero p { margin-bottom: 25px; }
+
 .footer {
-  margin-bottom: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #999;
+  margin-bottom: 25px;
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  text-align: center;
 }
 
 .headline p, .footer p {
@@ -110,6 +133,29 @@ h1, h2, h3, h4, h5, h6 {
 .alert {
   margin-top: 15px;
   font-size: .7em;
+}
+
+.text {
+  max-width: 860px;
+}
+
+section {
+  margin-bottom: 65px;
+}
+
+.page-faq .content h2 a {
+  color: #333;
+  text-decoration: none;
+}
+.page-faq .content h2 a i {
+  color: #aaa;
+  font-size: 22px;
+}
+.page-faq .content h2 a:hover {
+  color: #000;
+}
+.page-faq .content h2 a:hover i {
+  color: #f00;
 }
 
 @media (max-width: 1000px) {

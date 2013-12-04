@@ -1,0 +1,27 @@
+{% extends "_26thandcalifornia.html" %}
+
+{% block page %}
+<div class="headline">
+  <h1>{{ page_faq.title.value }}</h1>
+</div>
+
+<div class="hero">
+{{ page_faq.intro.value|markdown }}
+</div>
+
+<hr />
+
+{% for question in questions %}
+<section id="{{ question.id }}" class="text">
+<h2><a href="#{{ question.id }}">{{ question.question }} <i class="fa fa-anchor"></i></a></h2>
+{{ question.answer|markdown }}
+</section>
+{% endfor %}
+
+{% endblock %}
+
+{% block app %}
+$('.content').animate({'opacity': 1}, 750);
+{% endblock %}
+
+

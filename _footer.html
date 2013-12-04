@@ -1,13 +1,11 @@
-<div class="in-progress box">
-<h2>{{ wip_label }}</h2>
-<p>{{ wip_explanation|safe }}</p>
-<div id="in-progress-issues"></div>
-</div>
-
-<div class="footer" id="footer">
-  <p>{{ credit|safe }}</p>
-
-  <div class="alert alert-warning">
+<div class="container">
+  <div class="in-progress box">
+    <h2>{{ wip_label }}</h2>
+    <p>{{ wip_explanation|safe }}</p>
+    <div id="in-progress-issues"></div>
+  </div>
+  <div class="footer" id="footer">
     <p>{{ project_alert|safe }}</p>
+    <p>A <a href="http://github.com/sc3/sc3">Supreme Chi-Town Coding Crew</a> joint</p>
   </div>
 </div>

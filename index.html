@@ -1,50 +1,32 @@
 {% extends "_26thandcalifornia.html" %}
 
-{% block content %}
-<div class="container">
-  <div class="headline">
-    <h1>{{ headline }}</h1>
-    <p>{{ subheadline }}</p>
-  </div>
-  <div class="row">
-    <div class="col-md-7">
-      <h2>{{ findings_headline }}</h2>
-      <h3>On average, the jail population is <span class="population-trend-label"></span></h3>
-      <p>Since <span class="start"></span>, the average number of bookings per day is <span class="population-bookings"></span> and the average number of departures per day is <span class="population-leavings"></span>. This means that the jail population is changing by <span class="population-trend"></span> persons per day. <a href="population.html">Learn more about population trends &raquo;</a></p>
-      <h3>{{ finding1_headline }}</h3>
-      {{ finding1_text|markdown }}
-    </div>
-    <div class="col-md-5">
-      <h2>{{ about_headline }}</h2>
-      {{ about_text|markdown }}
-    </div>
-  </div>
+{% block page %}
+<div class="headline">
+  <h1>{{ headline }}</h1>
 </div>
-{% endblock content %}
 
-{% block scripts %}
-{{ super() }}
-<script type="text/javascript">
-$(document).ready(function() {
-  var collection = new JailCollection([], {
-    url: 'http://cookcountyjail.recoveredfactory.net/api/2.0/daily_population'
-  });
-  collection.fetch({
-    success: function() {
-      var booked_avg = collection.average('booked');
-      var left_avg = collection.average('left');
-      var booked_left_diff = booked_avg - left_avg;
-      var trend = (booked_left_diff > 0) ? "increasing" : "decreasing";
-      var first = collection.toJSON().pop();
-      $('.start').text(first.date);
-      $('.population-trend-label').text(trend);
-      $('.population-bookings').text(booked_avg.toFixed(1));
-      $('.population-leavings').text(left_avg.toFixed(1));
-      $('.population-trend').text(booked_left_diff.toFixed(1));
-    }
-  });
-});
-</script>
+<div class="hero">
+{{ about_text|markdown }}
+</div>
+
+<hr />
+
+<h3>On average, the jail population is <span class="population-trend-label"></span></h3>
+<p>Since <span class="start"></span>, the average number of bookings per day is <span class="population-bookings"></span> and the average number of departures per day is <span class="population-leavings"></span>. This means that the jail population is changing by <span class="population-trend"></span> persons per day. <a href="population.html">Learn more about population trends &raquo;</a></p>
+{% endblock %}
+
+{% block data_loaded %}
+var booked_avg = DailyPopulation.average('booked').toFixed(1);
+var left_avg = DailyPopulation.average('left').toFixed(1);
+var trend = (booked_avg - left_avg).toFixed(1);
+var trend_label = (trend > 0) ? "increasing" : "decreasing";
+var first = DailyPopulation.toJSON().pop();
+
+$('.start').text(first.date);
+$('.population-trend-label').text(trend_label);
+$('.population-bookings').text(booked_avg);
+$('.population-leavings').text(left_avg);
+$('.population-trend').text(trend);
 {% endblock %}
 
 
